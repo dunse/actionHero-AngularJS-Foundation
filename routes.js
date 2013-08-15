@@ -41,4 +41,12 @@ example:
 // ROUTES //
 ////////////
 
-exports.routes = {};
+exports.routes = {
+  get: [
+    { path: "/memo", action: "memoList" } // (GET) /api/memo
+  ],
+
+  post: [
+    { path: "/memo", action: "memoAdd" } // (POST) /api/memo
+  ],
+};
