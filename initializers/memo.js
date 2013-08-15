@@ -37,6 +37,31 @@ exports.memo = function(api, next){
         }
         next(error, memoData);
       });
+    },
+
+    update: function(name, content, next){
+      var self = this;
+      redis.hget(self.memoHash, name, function(error, data){
+        if(error != null){
+          next(error);
+        }else if(data == null){
+          next("name does not exists");
+        }else{
+          var newData = JSON.parse(data);
+          newData.content = content;
+          newData.updatedAt = new Date().getTime();
+          redis.hset(self.memoHash, name, JSON.stringify(newData), function(error){
+            next(error);
+          });
+        }
+      });
+    },
+
+    remove: function(name, next){
+      var self = this;
+      redis.hdel(self.memoHash, name, function(error, data){
+        next(error);
+      });
     }
   }
   next();

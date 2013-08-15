@@ -32,3 +32,37 @@ exports.memoList = {
     });
   }
 };
+
+exports.memoUpdate = {
+  name: "memoUpdate",
+  description: "I update a memo",
+  inputs: {
+    required: ["name", "content"],
+    optional: [],
+  },
+  outputExample: {},
+  version: 1.0,
+  run: function(api, connection, next){
+    api.memo.update(connection.params.name, connection.params.content, function(error){
+      connection.error = error;
+      next(connection, true);
+    });
+  }
+};
+
+exports.memoDelete = {
+  name: "memoDelete",
+  description: "I delete a memo",
+  inputs: {
+    required: ["name"],
+    optional: [],
+  },
+  outputExample: {},
+  version: 1.0,
+  run: function(api, connection, next){
+    api.memo.remove(connection.params.name, function(error){
+      connection.error = error;
+      next(connection, true);
+    });
+  }
+};

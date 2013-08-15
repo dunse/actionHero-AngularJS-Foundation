@@ -49,4 +49,13 @@ exports.routes = {
   post: [
     { path: "/memo", action: "memoAdd" } // (POST) /api/memo
   ],
+
+  put: [
+    { path: "/memo/:name", action: "memoUpdate" } // (PUT) /api/memo/My+Memo
+  ],
+
+  delete: [
+    { path: "/memo/:name", action: "memoDelete" } // (DELETE) /api/memo/My+Memo
+  ],
+
 };
