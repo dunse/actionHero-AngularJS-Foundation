@@ -30,10 +30,10 @@
 </form>
 
 <div class="row" ng-repeat="memo in memos">
-  <div class="small-4 columns">
-    {{memo.name}}
-  </div>
-  <div class="small-8 columns">
-    {{memo.content}}
+  <div class="small-8 small-offset-1 columns">
+    <div class="panel">
+      <h6>{{memo.name}}</h6><br/>
+      {{memo.content}}
+    </div>
   </div>
 </div>
